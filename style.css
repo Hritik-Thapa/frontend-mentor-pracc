@@ -1,3 +1,7 @@
+*{
+    box-sizing: border-box;
+}
+
 /* QR */
 
 .QR_bg{
@@ -75,16 +79,79 @@
 }
 
 .calculator_body {
-    width: 50%;
+    width: 450px;
     padding: 50px;
-    height: 500px;
+    height: 100%;
     font-family: 'Dela Gothic One', sans-serif;
 }
 
 .calculator_top{
     display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
+.calculator_themes{
+    display: flex;
+    font-size: 10px;
+    width: 100px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.theme_number{
+    color:#FFF;
+    padding: 0 2.5px;
+}
+.theme_indicator{
+    
+}   
+
+.theme_button{
+    background-color: #181F32;
+    width: 100%;
+    height: 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.theme{
+    opacity: 0;
+}
+.theme_pointer{
+    background-color: #F26F5B;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    position: absolute;
+    cursor: pointer;
+    /* z-index: 1; */
+}
+
+.pos_1{
+    left: 0;
+    transition: all 0.2s ease-in-out;
+}
+
+.pos_2{
+    left: calc(50% - 6px);
+    transition: all 0.3s ease-in-out;
+}
+
+
+.pos_3{
+    left: calc(100% - 12px);
+    transition: all 0.2s ease-in-out;
+}
+
+.theme_button div:not(.theme_pointer){
+    height: 100%;
+    width: 33.33%;
+    cursor: pointer;
+    /* background-color: white; */
+}
 .calc{
     color: white;
     
@@ -102,23 +169,50 @@
 .calculator_keys{
     width: 100%;
     background-color: #181F32;
+    table-layout: fixed;
     border-spacing: 18px;
     border-radius: 5px;
 }
 
-.calculator_keys td{
 
-    width: 200px;
+
+.calculator_keys td{
+    max-width: 70px;
     height: 50px;
-    
 }
 .calculator_keys button{
     width: 100%;
     height: 100%;
     border-radius: 10px;
-    background-color: white;
+    color: #252a34;
+    background-color: #d1ceca;
     padding: 20px;
     display: flex;
     justify-content: center;
+    font-family: 'Dela Gothic One', sans-serif;
+    font-size: 18px;
     align-items: center;    
+    
+}
+
+.calculator_keys button:hover{
+    cursor: pointer;
+    background-color: white;
+    color:rgb(32, 31, 31)34;
+}
+
+.calculator_keys button.keys_actions:hover{
+    background-color: #7290e3;
+    color: #EFEFF7;
+    border: #556184 1px solid;
+    transition: all 0.1s ease;
+    cursor: pointer;
+}
+
+.calculator_keys button.keys_bottom:not(.keys_actions):hover{
+    background-color: #FA6B5B;
+    color: #EFEFF7;
+    border: #b04b40 1px solid;
+    transition: all 0.1s ease;
+    cursor: pointer;
 }
