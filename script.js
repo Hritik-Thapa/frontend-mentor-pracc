@@ -4,18 +4,34 @@
 
 function theme_changer(number) {
   const pointer = document.querySelector(".theme_pointer");
+  const calculator=document.querySelector('.calculator');
   if (number == 1) {
     pointer.classList.remove("pos_2");
     pointer.classList.remove("pos_3");
     pointer.classList.add("pos_1");
+
+    calculator.classList.remove('bg_2');
+    calculator.classList.remove('bg_3');
+    calculator.classList.add('bg_1');
+
   } else if (number == 2) {
     pointer.classList.remove("pos_1");
     pointer.classList.remove("pos_3");
     pointer.classList.add("pos_2");
+
+    calculator.classList.remove('bg_1');
+    calculator.classList.remove('bg_3');
+    calculator.classList.add('bg_2');
+
   } else {
     pointer.classList.remove("pos_2");
     pointer.classList.remove("pos_1");
     pointer.classList.add("pos_3");
+
+    calculator.classList.remove('bg_2');
+    calculator.classList.remove('bg_1');
+    calculator.classList.add('bg_3');
+
   }
 }
 
@@ -68,11 +84,10 @@ document.querySelectorAll(`.calculator_keys button`).forEach((element) => {
         break;
 
       default:
-        if(value==="RESET" || display===true){
-          input.innerHTML='';
-        }
-        else{
-          input.innerHTML=input.innerHTML.slice(0,-1)
+        if (value === "RESET" || display === true) {
+          input.innerHTML = "";
+        } else {
+          input.innerHTML = input.innerHTML.slice(0, -1);
         }
         break;
     }
@@ -96,8 +111,8 @@ document.querySelectorAll(`.calculator_keys button`).forEach((element) => {
       let termsString = input.innerHTML.split(/\+|\-|\/|[x]/g);
       let eqnOperator = input.innerHTML.replace(/[0-9]|\./g, "").split("");
 
-      terms=termsString.map((e) => Number(e));
-      console.log(terms,eqnOperator)
+      terms = termsString.map((e) => Number(e));
+      console.log(terms, eqnOperator);
       while (eqnOperator.includes("/")) {
         const index = eqnOperator.indexOf("/");
         terms.splice(index, 2, terms[index] / terms[index + 1]);
@@ -119,8 +134,8 @@ document.querySelectorAll(`.calculator_keys button`).forEach((element) => {
         eqnOperator.splice(index, 1);
       }
 
-      input.innerHTML=terms[0];
-      display=true
+      input.innerHTML = terms[0];
+      display = true;
       console.log(terms, eqnOperator);
     }
   }
